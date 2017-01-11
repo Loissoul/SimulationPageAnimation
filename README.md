@@ -1,0 +1,6 @@
+# SimulationPageAnimation
+##关于转场动画的学习以及封装
+- 通过UIViewController类扩展监听跳转代理， 实现PGQTransitionManager中的 各类 动画方法
+- 在UIviewcontroller类扩展中监听UIViewControllerTransitioningDelegate跳转 代理的返回值UIViewControllerAnimatedTransitioning
+- 在单例中配置 UIViewControllerAnimatedTransitioning 系统自动走入单例中跳转返回的动画 UIViewControllerAnimatedTransitioning 的监听
+- 通过PGQTransitionManager单例的类扩展去实现具体的转场动画
