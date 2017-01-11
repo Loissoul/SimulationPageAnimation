@@ -1,0 +1,59 @@
+//
+//  AppDelegate.m
+//  SimulationPageAnimation
+//
+//  Created by Lois_pan on 16/11/29.
+//  Copyright © 2016年 Lois_pan. All rights reserved.
+//
+
+//通过UIViewController类扩展监听跳转代理， 实现PGQTransitionManager中的 各类 动画方法
+
+//zai uiviewcontroller类扩展中监听 UIViewControllerTransitioningDelegate 跳转  代理的返回值UIViewControllerAnimatedTransitioning
+
+// 在单例中配置 UIViewControllerAnimatedTransitioning 跳转返回的动画   系统自动走入单例中UIViewControllerAnimatedTransitioning 的监听
+
+//通过PGQTransitionManager单例的类扩展去实现具体的转场动画
+
+//这样封装可以更好的集成在项目中
+
+#import "AppDelegate.h"
+#import "ViewController.h"
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    UIViewController * rootViewController = [[ViewController alloc] init];
+    
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    [self.window makeKeyAndVisible];
+    return YES;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+@end
