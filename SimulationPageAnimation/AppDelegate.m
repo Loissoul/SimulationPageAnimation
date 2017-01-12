@@ -6,15 +6,6 @@
 //  Copyright © 2016年 Lois_pan. All rights reserved.
 //
 
-//通过UIViewController类扩展监听跳转代理， 实现PGQTransitionManager中的 各类 动画方法
-
-//zai uiviewcontroller类扩展中监听 UIViewControllerTransitioningDelegate 跳转  代理的返回值UIViewControllerAnimatedTransitioning
-
-// 在单例中配置 UIViewControllerAnimatedTransitioning 跳转返回的动画   系统自动走入单例中UIViewControllerAnimatedTransitioning 的监听
-
-//通过PGQTransitionManager单例的类扩展去实现具体的转场动画
-
-//这样封装可以更好的集成在项目中
 
 #import "AppDelegate.h"
 #import "ViewController.h"

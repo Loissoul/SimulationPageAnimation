@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "UIViewController+PGQTransition.h"
+#import "UINavigationController+PGQTransition.h"
+
 
 enum {ExamplePDF, ExampleImage, ExampleProcedural, NumExamples};
 
@@ -27,7 +29,6 @@ enum {ExamplePDF, ExampleImage, ExampleProcedural, NumExamples};
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    NSString * path = [[NSBundle mainBundle] pathForResource:@"lorem" ofType:@"txt"];
 //    NSString * textString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    
 }
 
 #pragma mark UITableViewDataSource
@@ -78,10 +79,18 @@ enum {ExamplePDF, ExampleImage, ExampleProcedural, NumExamples};
             viewController = nil;
     }
     
+    //跳转方式
+//    1.present
+//    [self pgq_presentViewController:viewController makeTransition:^(PGQTransitionProperty *transition) {
+//        transition.animationType = PGQTransitionAnimationTypeSysFade;
+//        transition.animationTime = 1.0;
+//    }];
+    
+//    2.push
+//    [self.navigationController pgq_pushViewController:viewController makeTransition:^(PGQTransitionProperty *transition) {
+//    }];
+    
     if (viewController)
-//        self.navigationController pgq_presentViewController:<#(UIViewController *)#> makeTransition:^(PGQTransitionProperty *transition) {
-//            <#code#>
-//        }
         [self.navigationController pushViewController:viewController animated:YES];
 }
 
