@@ -14,7 +14,11 @@
     
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
+    //snapshotViewAfterScreenUpdates可以对某个视图截图，我们采用对这个截图做动画代替直接对vc1做动画，因为在手势过渡中直接使用vc1动画会和手势有冲突，如果不需要实现手势的话，就可以不是用截图视图了，大家可以自行尝试一下
     UIView *tempView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
+    
+    //这里有个重要的概念containerView，如果要对视图做转场动画，视图就必须要加入containerView中才能进行，可以理解containerView管理者所有做转场动画的视图
     UIView *containerView = [transitionContext containerView];
     
     [containerView addSubview:toVC.view];
@@ -22,6 +26,8 @@
     [containerView insertSubview:toVC.view atIndex:0];
     
     tempView.frame = fromVC.view.frame;
+    
+    
     fromVC.view.hidden = YES;
     CGPoint point = CGPointMake(0, 0.5);
     tempView.frame = CGRectOffset(tempView.frame, (point.x - tempView.layer.anchorPoint.x) * tempView.frame.size.width, (point.y - tempView.layer.anchorPoint.y) * tempView.frame.size.height);
@@ -44,7 +50,6 @@
         }
     }];
 }
-
 
 - (void)pgq_sysTransitionBackAnimationWithType:(PGQTransitionAnimationType)type context:(id<UIViewControllerContextTransitioning>)transitionContext {
     
@@ -79,7 +84,6 @@
             fromVC.view.alpha = 1;
         }
     };
-
 }
 
 
